@@ -1,0 +1,9 @@
+AA 142, take taxi to runway 3
+Emirates 89 approach on runway 2
+AA 142 cleared for takeoff
+Emirates 89 taxi to gate G15
+AA 142 please descend to 7000 feet immediately
+Swissair 91 what is your altitude?
+Swissair 91 please enter a holding pattern
+
+Planes follow ATC instructions using A* search algorithm, randomized to simulate "error"
