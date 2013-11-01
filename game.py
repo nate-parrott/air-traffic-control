@@ -1,4 +1,5 @@
 import pygame
+import render
 
 class Game(object):
 	def __init__(self, map):
@@ -12,9 +13,13 @@ class Game(object):
 		self.h = int(self.w/aspect)
 		self.surface = pygame.display.set_mode((self.w, self.h))
 		while True:
-			self.surface.fill(pygame.Color(255, 255, 255))
+			for event in pygame.event.get():
+				if event.type == pygame.QUIT:
+					break
+			render.render(self)
 			pygame.display.update()
 			self.clock.tick(30)
+		pygame.quit()
 
 if __name__=='__main__':
 	import json
