@@ -10,5 +10,6 @@ samples = [
 	["Dispatch", ["Plane", "BA 300"], ["Command", ["HoldingPattern", "enter a holding pattern at", ["Altitude", "7,000 feet"]]]],
 	["Dispatch", ["Plane", "BA 201"], ["Command", ["Taxi", "taxi on taxiway", ["Place", "T1"]]]],
 	["Dispatch", ["Plane", "Air China 888"], ["Command", ["TaxiVia", "taxi to", ["Place", "runway 3"], "via", ["Place", "T2"]]]],
-	["Dispatch", ["Plane", "BA 404"], ["Command", ["Stop", "stop moving"]]]
+	["Dispatch", ["Plane", "BA 404"], ["Command", ["Stop", "stop moving"]]],
+	["Dispatch", ["Plane", "JetBlue 35"], ["Command", ["Takeoff", "take off now"]]]
 ]
