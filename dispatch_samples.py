@@ -6,5 +6,7 @@ samples = [
 	["Dispatch", ["Plane", "Delta 92"], ["Query", ["AltitudeQuery", "what's your altitude ?"]]],
 	["Dispatch", ["Plane", "American 32"], "you're cleared for", ["Command", ["Landing", "landing on", ["Place", "runway 1"]]]],
 	["Dispatch", ["Plane", "American 104"], ["Command", ["AscendTo", "go to", ["Altitude", "5,000 feet"]]]],
-	["Dispatch", ["Plane", "BA 300"], ["Command", ["HoldingPattern", "enter a holding pattern at", ["Altitude", "7,000 feet"]]]]
+	["Dispatch", ["Plane", "BA 300"], ["Command", ["HoldingPattern", "enter a holding pattern at", ["Altitude", "7,000 feet"]]]],
+	["Dispatch", ["Plane", "BA 201"], ["Command", ["Taxi", "taxi on taxiway", ["Place", "T1"]]]],
+	["Dispatch", ["Plane", "Air China 888"], ["Command", ["TaxiVia", "taxi to", ["Place", "runway 3"], "via", ["Place", "T2"]]]]
 ]

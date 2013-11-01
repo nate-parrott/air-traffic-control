@@ -1,13 +1,13 @@
 {
 	"name": "Airport A",
-	"width": 10,
-	"height": 10,
+	"width": 20,
+	"height": 20,
 	"features": [
 		{"type": "runway", "name": "Runway 1", "start": [0,0], "end": [5, 0]},
 		{"type": "runway", "name": "Runway 2", "start": [7, 7], "end": [2, 7]},
-		{"type": "taxiway", "start": [0, 3], "end": [10, 3]},
-		{"type": "taxiway", "start": [0, 3], "end": [0, 0]},
-		{"type": "taxiway", "start": [7, 3], "end": [7, 7]},
+		{"type": "taxiway", "name": "T1", "start": [0, 3], "end": [10, 3]},
+		{"type": "taxiway", "name": "T2", "start": [0, 3], "end": [0, 0]},
+		{"type": "taxiway", "name": "T3", "start": [7, 3], "end": [7, 7]},
 		{"type": "gate", "name": "A1", "position": [5, 2]},
 		{"type": "gate", "name": "A2", "position": [6, 2]}
 	]
