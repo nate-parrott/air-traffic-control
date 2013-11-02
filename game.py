@@ -5,7 +5,7 @@ import random
 
 FRAME_RATE = 30
 
-NEW_PLANES_PER_SECOND = 0# 0.1
+NEW_PLANES_PER_SECOND = 0 # 0.1
 
 class Game(object):
 	def __init__(self, map):

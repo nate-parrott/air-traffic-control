@@ -1,5 +1,6 @@
 import pygame
 import math
+import map
 
 BACKGROUND_COLOR = (0,0,0)
 RUNWAY_COLOR = (100, 0, 0)
@@ -23,13 +24,8 @@ def fill_cell(game, point, color):
 	pygame.draw.rect(game.surface, color, (xsize*point[0], ysize*point[1], xsize, ysize))
 
 def draw_path(game, start, to, color):
-	dx = to[0]-start[0]
-	dy = to[1]-start[1]
-	dist = abs(dx+dy)
-	p = start
-	while p != to:
-		fill_cell(game, p, color)
-		p = [p[0]+dx/dist, p[1]+dy/dist]
+	for cell in map.cells_between(start, to):
+		fill_cell(game, cell, color)
 
 def render(game):
 	xsize = game.w / game.map['width']
@@ -53,11 +49,12 @@ def render(game):
 	size = (xsize + ysize)/2 * 0.8
 	scale = (size / plane_image.get_width() + size / plane_image.get_height())/2.0
 	for plane in game.planes:
-		angle = math.atan2(plane.velocity[1], plane.velocity[0]) * 180 / math.pi
+		state = plane.current_state()
+		angle = math.atan2(state.velocity[1], state.velocity[0]) * 180 / math.pi
 		transformed = pygame.transform.rotozoom(plane_image, -angle, scale)
-		game.surface.blit(transformed, (plane.position[0]*xsize-transformed.get_width()/2, plane.position[1]*ysize-transformed.get_height()/2))
+		game.surface.blit(transformed, ((state.position[0]+0.5)*xsize-transformed.get_width()/2, (state.position[1]+0.5)*ysize-transformed.get_height()/2))
 		font = pygame.font.Font("courier-new-bold.ttf", 13)
-		text_pos = (plane.position[0]*xsize-transformed.get_width()/2, plane.position[1]*ysize+transformed.get_height()/2)
-		plane_label = "%s [%i ft]"%(plane.name, int(plane.altitude))
+		text_pos = (state.position[0]*xsize-transformed.get_width()/2, state.position[1]*ysize+transformed.get_height()/2)
+		plane_label = "%s [%i ft]"%(plane.name, int(state.altitude))
 		game.surface.blit(font.render(plane_label, True, TEXT_COLOR), text_pos)
 

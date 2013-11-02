@@ -1,10 +1,19 @@
 
+def select_min(items, fn):
+	lowest = items[0]
+	lowest_score = fn(lowest)
+	for item in items:
+		score = fn(item)
+		if score < lowest_score:
+			lowest = item
+			lowest_score = score
+	return lowest
+
 def astar(starting_state, transition_fn, heuristic_fn, target_state):
 	frontier = [(0, [starting_state])]
 	visited_states = set()
 	while len(frontier):
-		frontier.sort(key=lambda (cost, states): cost + heuristic_fn(states[-1]))
-		visit = frontier[0]
+		visit = select_min(frontier, lambda (cost, states): cost + heuristic_fn(states[-1]))
 		frontier.remove(visit)
 		cost, states = visit
 		if states[-1] not in visited_states:
