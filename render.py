@@ -49,12 +49,12 @@ def render(game):
 	size = (xsize + ysize)/2 * 0.8
 	scale = (size / plane_image.get_width() + size / plane_image.get_height())/2.0
 	for plane in game.planes:
-		state = plane.current_state()
-		angle = math.atan2(state.velocity[1], state.velocity[0]) * 180 / math.pi
+		position = plane.current_pos()
+		angle = 0#math.atan2(state.velocity[1], state.velocity[0]) * 180 / math.pi
 		transformed = pygame.transform.rotozoom(plane_image, -angle, scale)
-		game.surface.blit(transformed, ((state.position[0]+0.5)*xsize-transformed.get_width()/2, (state.position[1]+0.5)*ysize-transformed.get_height()/2))
+		game.surface.blit(transformed, ((position[0]+0.5)*xsize-transformed.get_width()/2, (position[1]+0.5)*ysize-transformed.get_height()/2))
 		font = pygame.font.Font("courier-new-bold.ttf", 13)
-		text_pos = (state.position[0]*xsize-transformed.get_width()/2, state.position[1]*ysize+transformed.get_height()/2)
-		plane_label = "%s [%i ft]"%(plane.name, int(state.altitude))
+		text_pos = (position[0]*xsize-transformed.get_width()/2, position[1]*ysize+transformed.get_height()/2)
+		plane_label = "%s [%i ft]"%(plane.name, position[2])
 		game.surface.blit(font.render(plane_label, True, TEXT_COLOR), text_pos)
 

@@ -2,6 +2,7 @@ import pygame
 import render
 import plane as plane
 import random
+import routing
 
 FRAME_RATE = 30
 
@@ -10,6 +11,7 @@ NEW_PLANES_PER_SECOND = 0 # 0.1
 class Game(object):
 	def __init__(self, map):
 		self.map = map
+		self.route_map = routing.RouteMap(map)
 	
 	def run(self):
 		pygame.init()
@@ -18,7 +20,8 @@ class Game(object):
 		self.w = 700
 		self.h = int(self.w/aspect)
 		self.surface = pygame.display.set_mode((self.w, self.h))
-		self.planes = [plane.Plane(self)]
+		self.planes = []
+		self.planes.append(plane.Plane(self))
 		while True:
 			dt = 1.0/FRAME_RATE
 			# handle events:
